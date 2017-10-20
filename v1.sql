@@ -4,6 +4,7 @@ SET SESSION FOREIGN_KEY_CHECKS=0;
 
 DROP TABLE IF EXISTS t_love_number;
 DROP TABLE IF EXISTS t_notice_suggestion;
+DROP TABLE IF EXISTS t_suggestion_task;
 DROP TABLE IF EXISTS t_notice;
 DROP TABLE IF EXISTS t_family_structure;
 DROP TABLE IF EXISTS t_love_family_umber;
@@ -84,20 +85,17 @@ CREATE TABLE t_notice
 	notice_contents text COMMENT '行動する前の内容',
 	result_contents text,
 	is_skip boolean DEFAULT 'false',
-	-- 受け入れた提案id
-	-- 未読やスキップ、まだ決めてない時はnull
-	suggestion_id int COMMENT '受け入れた提案id
-未読やスキップ、まだ決めてない時はnull',
 	PRIMARY KEY (id)
 );
 
 
 CREATE TABLE t_notice_suggestion
 (
+	id int NOT NULL AUTO_INCREMENT,
 	notice_id int NOT NULL,
-	suggestion_detail_id int NOT NULL,
-	task_done boolean DEFAULT 'false' NOT NULL,
-	PRIMARY KEY (notice_id, suggestion_detail_id)
+	suggestion_id int NOT NULL,
+	receiving boolean DEFAULT 'false',
+	PRIMARY KEY (id)
 );
 
 
@@ -114,6 +112,15 @@ CREATE TABLE t_scene
 	id int NOT NULL AUTO_INCREMENT,
 	family_id int NOT NULL,
 	PRIMARY KEY (id)
+);
+
+
+CREATE TABLE t_suggestion_task
+(
+	suggestion_detail_id int NOT NULL,
+	notice_id int NOT NULL,
+	done boolean DEFAULT 'false' NOT NULL,
+	PRIMARY KEY (suggestion_detail_id, notice_id)
 );
 
 
@@ -152,7 +159,7 @@ ALTER TABLE m_suggestion_detail
 ;
 
 
-ALTER TABLE t_notice
+ALTER TABLE t_notice_suggestion
 	ADD FOREIGN KEY (suggestion_id)
 	REFERENCES m_suggestion (id)
 	ON UPDATE RESTRICT
@@ -160,7 +167,7 @@ ALTER TABLE t_notice
 ;
 
 
-ALTER TABLE t_notice_suggestion
+ALTER TABLE t_suggestion_task
 	ADD FOREIGN KEY (suggestion_detail_id)
 	REFERENCES m_suggestion_detail (id)
 	ON UPDATE RESTRICT
@@ -193,6 +200,14 @@ ALTER TABLE t_love_number
 
 
 ALTER TABLE t_notice_suggestion
+	ADD FOREIGN KEY (notice_id)
+	REFERENCES t_notice (id)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
+;
+
+
+ALTER TABLE t_suggestion_task
 	ADD FOREIGN KEY (notice_id)
 	REFERENCES t_notice (id)
 	ON UPDATE RESTRICT
