@@ -1,0 +1,19 @@
+{
+  "name": "database",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "up": "$(npm bin)/db-migrate up"
+  },
+  "author": "k.kono",
+  "license": "MIT",
+  "devDependencies": {
+    "db-migrate": "^0.10.0-beta.24",
+    "db-migrate-mysql": "^1.1.10"
+  },
+  "dependencies": {
+    "mysql": "^2.15.0"
+  }
+}
