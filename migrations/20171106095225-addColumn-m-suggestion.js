@@ -15,13 +15,22 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db) {
-  return db.renameTable('m_famiry', 'm_family');
+  return db.addColumn('m_suggestion', 'note', {
+      type: type.TEXT
+  }).then(function () {
+      db.addColumn('m_suggestion', 'type', {
+          type: type.TEXT
+      })
+  });
 };
 
 exports.down = function(db) {
-  return db.renameTable('m_family', 'm_famiry');
+  return db.removeColumn('m_suggestion', 'note')
+      .then(function () {
+          db.removeColumn('m_suggestion', 'type')
+      });
 };
 
 exports._meta = {
-  "version": 2,
+  "version": 1
 };

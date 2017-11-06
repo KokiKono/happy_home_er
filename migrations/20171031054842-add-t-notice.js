@@ -22,7 +22,7 @@ exports.up = function(db) {
 };
 
 exports.down = function(db) {
-  return null;
+  return db.removeColumn('t_notice', 'is_old');
 };
 
 exports._meta = {

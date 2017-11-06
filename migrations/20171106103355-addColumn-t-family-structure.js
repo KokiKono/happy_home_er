@@ -15,13 +15,15 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db) {
-  return db.renameTable('m_famiry', 'm_family');
+  return db.addColumn('t_family_structure', 'face_id', {
+      type: type.TEXT, notNull: true, default: ''
+  });
 };
 
 exports.down = function(db) {
-  return db.renameTable('m_family', 'm_famiry');
+  return db.removeColumn('t_family_structure', 'face_id');
 };
 
 exports._meta = {
-  "version": 2,
+  "version": 1
 };

@@ -21,7 +21,7 @@ exports.up = function(db) {
 };
 
 exports.down = function(db) {
-  return null;
+  return db.removeColumn('m_suggestion', 'point');
 };
 
 exports._meta = {
