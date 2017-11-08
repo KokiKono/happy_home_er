@@ -20,6 +20,7 @@ DROP TABLE IF EXISTS m_suggestion_detail;
 DROP TABLE IF EXISTS t_suggestion_judgment;
 DROP TABLE IF EXISTS m_suggestion;
 DROP TABLE IF EXISTS presentation_management;
+DROP TABLE IF EXISTS tmp_faceAPI;
 
 
 
@@ -73,6 +74,16 @@ CREATE TABLE presentation_management
 	name text NOT NULL,
 	-- START , END
 	type text COMMENT 'START , END',
+	PRIMARY KEY (id)
+);
+
+
+CREATE TABLE tmp_faceAPI
+(
+	id int NOT NULL AUTO_INCREMENT,
+	image_path text,
+	-- 個別に対応したデータ
+	json_data text COMMENT '個別に対応したデータ',
 	PRIMARY KEY (id)
 );
 
