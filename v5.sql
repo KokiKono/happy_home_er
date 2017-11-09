@@ -84,6 +84,7 @@ CREATE TABLE tmp_faceAPI
 	image_path text,
 	-- 個別に対応したデータ
 	json_data text COMMENT '個別に対応したデータ',
+	timestamp timestamp DEFAULT NOW(),
 	PRIMARY KEY (id)
 );
 
