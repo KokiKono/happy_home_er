@@ -46,6 +46,8 @@ CREATE TABLE face_relation
 	-- microsoft FaceAPIのユニークID
 	face_id text COMMENT 'microsoft FaceAPIのユニークID',
 	image_path text,
+	-- 個別に対応したデータ
+	json_data text COMMENT '個別に対応したデータ',
 	PRIMARY KEY (id)
 );
 
