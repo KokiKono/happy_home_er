@@ -45,6 +45,7 @@ CREATE TABLE face_relation
 	id int NOT NULL AUTO_INCREMENT,
 	-- microsoft FaceAPIのユニークID
 	face_id text COMMENT 'microsoft FaceAPIのユニークID',
+	image_path text,
 	PRIMARY KEY (id)
 );
 
