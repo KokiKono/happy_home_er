@@ -19,7 +19,8 @@ exports.up = function(db) {
       id: {
           type: type.INTEGER,
           notNull: true,
-          primaryKey: true
+          primaryKey: true,
+          autoIncrement: true,
       },
       image_path: {
           type: type.TEXT
