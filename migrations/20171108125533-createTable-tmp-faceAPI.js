@@ -26,6 +26,11 @@ exports.up = function(db) {
       },
       json_data: {
           type: type.TEXT
+      },
+      timestamp: {
+          type: type.TIMESTAMP,
+          notNUll: true,
+          default: 'NOW()'
       }
   });
 };
