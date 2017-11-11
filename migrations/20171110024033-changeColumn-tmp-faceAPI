@@ -15,23 +15,14 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db) {
-  return db.createTable('tmp_faceAPI', {
-      id: {
-          type: type.INTEGER,
-          notNull: true,
-          primaryKey: true
-      },
-      image_path: {
-          type: type.TEXT
-      },
-      json_data: {
-          type: type.TEXT
-      }
+  return db.changeColumn('tmp_faceAPI', 'id' , {
+      type: type.INTEGER,
+      autoIncrement: true,
   });
 };
 
 exports.down = function(db) {
-  return db.dropTable('tmp_faceAPI');
+  return null;
 };
 
 exports._meta = {

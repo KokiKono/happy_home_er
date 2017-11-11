@@ -15,16 +15,16 @@ exports.setup = function(options, seedLink) {
 };
 
 exports.up = function(db) {
-  return db.changeColumn('tmp_faceAPI', 'id' , {
-      type: type.INTEGER,
-      unsigned: true,
-      autoIncrement: true,
-      length: 11,
+  return db.runSql('ALTER TABLE `tmp_faceAPI` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT', null, (e) => {
+      console.log(e);
   });
 };
 
 exports.down = function(db) {
-  return null;
+  return db.changeColumn('tmp_faceAPI', 'id' , {
+      type: type.INTEGER,
+      notNull: true,
+  });
 };
 
 exports._meta = {

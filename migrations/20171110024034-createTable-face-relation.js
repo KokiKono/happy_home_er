@@ -20,31 +20,24 @@ exports.up = function(db) {
       length: 11,
   }, () => {
       db.createTable('face_relation', {
+          id: {
+              type: type.INTEGER,
+              notNull: true,
+              primaryKey: true,
+              autoIncrement: true,
+          },
           tmp_faceAPI_id: {
               type: type.INTEGER,
               notNull: true,
-              // foreignKey: {
-              //     name: 'face_relation_tmp_faceAPI_id_fk',
-              //     table: 'tmp_faceAPI',
-              //     mapping: 'id',
-              //     rules: {
-              //         onDelete: 'RESTRICT',
-              //         onUpdate: 'RESTRICT'
-              //     }
-              // }
-          },
-          tmp_face_group_id: {
-              type: type.INTEGER,
-              notNull: true,
-              // foreignKey: {
-              //     name: 'ace_relation_tmp_face_group_id_fk',
-              //     table: 'tmp_face_group',
-              //     mapping: 'id',
-              //     rules: {
-              //         onDelete: 'RESTRICT',
-              //         onUpdate: 'RESTRICT'
-              //     }
-              // }
+              foreignKey: {
+                  name: 'face_relation_tmp_faceAPI_id_fk',
+                  table: 'tmp_faceAPI',
+                  mapping: 'id',
+                  rules: {
+                      onDelete: 'RESTRICT',
+                      onUpdate: 'RESTRICT'
+                  }
+              }
           },
           face_id: {
               type: type.TEXT,

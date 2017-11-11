@@ -22,7 +22,19 @@ exports.up = function(db) {
             notNull: true,
             primaryKey: true,
             autoIncrement: true,
-            length: 11,
+        },
+        face_relation_id: {
+            type: type.INTEGER,
+            notNull: true,
+            foreignKey: {
+                name: 'tmp_face_group_face_relation_id_fk',
+                table: 'face_relation',
+                mapping: 'id',
+                rules: {
+                    onDelete: 'RESTRICT',
+                    onUpdate: 'RESTRICT'
+                }
+            }
         },
         face_id: {
             type: type.TEXT,
