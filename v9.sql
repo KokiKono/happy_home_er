@@ -79,6 +79,7 @@ CREATE TABLE m_suggestion_detail
 	id int NOT NULL AUTO_INCREMENT,
 	suggestion_id int NOT NULL,
 	task_contents text,
+	title text,
 	PRIMARY KEY (id)
 );
 
