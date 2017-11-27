@@ -70,6 +70,16 @@ CREATE TABLE m_suggestion
 	-- 提案するタイプ（モバイル、スピーカー、リフォームなど)
 	type text COMMENT '提案するタイプ（モバイル、スピーカー、リフォームなど)',
 	tag_icon text,
+	-- ALL
+	-- 父
+	-- 母
+	-- 娘
+	-- 息子
+	to_type varchar(255) DEFAULT 'ALL' COMMENT 'ALL
+父
+母
+娘
+息子',
 	PRIMARY KEY (id)
 );
 
