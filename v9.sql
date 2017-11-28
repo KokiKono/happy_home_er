@@ -80,6 +80,8 @@ CREATE TABLE m_suggestion
 母
 娘
 息子',
+	-- to_typeと同じもの
+	from_type varbinary(255) COMMENT 'to_typeと同じもの',
 	PRIMARY KEY (id)
 );
 
